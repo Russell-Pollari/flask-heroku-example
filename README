@@ -1,6 +1,6 @@
 # Basic Flask app for heroku
 
-Minimal working Flask app for heroku  
+Minimal working Flask app for heroku
 
 Live example here:
 https://sm-flask-heroku-tutorial.herokuapp.com/
@@ -24,8 +24,8 @@ https://sm-flask-heroku-tutorial.herokuapp.com/
 ```
 
 ## Development
-To ensure is in debug mode set `FLASK_ENV` envioronment variable:  
-`$ export FLASK_ENV=development`  
+To ensure is in debug mode set `FLASK_ENV` envioronment variable:
+`$ export FLASK_ENV=development`
 
-Run app locally (starts server on localhost:5000)   
+Run app locally (starts server on localhost:5000)
 `$ flask run`
