@@ -7,9 +7,11 @@ app = Flask(__name__)
 def home():
 	return render_template('home.html')
 
+
 @app.route('/greet/<name>', methods=['GET'])
 def greet(name):
 	return 'Hello {}'.format(name)
+
 
 @app.route('/add_numbers', methods=['POST'])
 def add_numbers():
@@ -32,9 +34,11 @@ def add_numbers():
 
 	return render_template('home.html', result=sum, num1=num1, num2=num2)
 
+
 @app.errorhandler(404)
 def error(e):
-	return 'Sorry, not found', 404
+	return 'Page not found', 404
+
 
 if __name__ == '__main__':
 	app.run();
