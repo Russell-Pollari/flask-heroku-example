@@ -1,0 +1,21 @@
+<!doctype html>
+<div style="text-align: center">
+	<h1>
+		Add two numbers
+	</h1>
+	<form method="post" action="/add_numbers">
+		<input name="num1" type="number" placeholder="Number 1" />
+		+
+		<input name="num2" type="number" placeholder="Number 2" />
+		<button type="submit">
+			Add
+		</button>
+	</form>
+	{% if result %}
+		<p style="text-align: center">
+			<strong>
+				{{ num1 }} + {{ num2 }} = {{ result }}
+			</strong>
+		</p>
+	{% endif %}
+</div>
