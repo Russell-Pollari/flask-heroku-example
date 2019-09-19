@@ -1,6 +1,9 @@
 # Basic Flask app for heroku
 
-Minimal working Flask app setup for heroku
+Minimal working Flask app for heroku  
+
+Live example here:
+https://sm-flask-heroku-tutorial.herokuapp.com/
 
 ## Deploying:
 1. `$ git init`
