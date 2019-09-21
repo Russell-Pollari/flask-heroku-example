@@ -1,6 +1,6 @@
-# Basic Flask app for heroku
+# Basic Flask app for Heroku
 
-Minimal working Flask app for heroku.  
+Minimal working Flask app for Heroku.  
 Adds two numbers (wow!).
 
 Live example here:
@@ -34,7 +34,7 @@ https://sm-flask-heroku-tutorial.herokuapp.com/
 Install dependencies:  
 `$ pip install -r requirements.txt`
 
-To ensure app runs in debug mode set `FLASK_ENV` envioronment variable before running:
+To ensure app runs in debug mode set `FLASK_ENV` envioronment variable before running:  
 `$ export FLASK_ENV=development`
 
 
