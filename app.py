@@ -1,44 +1,45 @@
+import os
+import numpy as np
 from flask import Flask, request, render_template
-from utils import is_number
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing.image import load_img, img_to_array
+
+# TODO: Load model from remote storage
+print('Loading model...');
+model = load_model('trained_models/model.h5')
 
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
-def home():
-	return render_template('home.html')
+def index():
+	return render_template('index.html')
 
 
-@app.route('/greet/<name>', methods=['GET'])
-def greet(name):
-	return 'Hello {}'.format(name)
+@app.route('/predict', methods=['POST'])
+def predict():
+	if request.method == 'POST':
+		if 'file' not in request.files:
+			return 'No file found', 400
 
+		file = request.files['file']
+		# TODO: check file type
 
-@app.route('/add_numbers', methods=['POST'])
-def add_numbers():
-	data = request.form
+		try:
+			x = img_to_array(load_img(file)) / 256
+		except:
+			return 'Invalid input', 400
 
-	if 'num1' not in data.keys():
-		return 'Missing num1', 400
-	if 'num2' not in data.keys():
-		return 'Missing num2', 400
+		# TODO: validate input
+		print('Input', x)
 
-	num1 = data['num1']
-	num2 = data['num2']
+		pred = model.predict(np.expand_dims(x, axis=0))
+		print('Output', pred);
 
-	if not is_number(num1):
-		return 'Num1 is invalid', 400
-	if not is_number(num2):
-		return 'Num2 is invalid', 400
+		result = pred[0][0]
+		text = 'metal!' if result < 0.5 else 'not metal'
 
-	sum = float(num1) + float(num2)
-
-	return render_template('home.html', result=sum, num1=num1, num2=num2)
-
-
-@app.errorhandler(404)
-def error(e):
-	return 'Page not found', 404
+		return render_template('index.html', result=result, text=text)
 
 
 if __name__ == '__main__':
-	app.run();
+	app.run()
