@@ -6,20 +6,15 @@
 	<h3>
 		Upload an album cover
 	</h3>
-	<form method="post" action="/predict"  enctype=multipart/form-data>
-		<input name="file" type="file" />
+	<div>
+		{{ name }}
+	</div>
+	<form method="post" action="/predict" enctype="multipart/form-data">
+		<input name="album" type="file" />
 		<div>
 			<button type="submit" style="margin: 16px">
 				Is it metal?
 			</button>
 		</div>
 	</form>
-	<div>
-		<p>
-			{{ result }}
-		</p>
-		<p>
-			{{ text  }}
-		</p>
-	</div>
 </div>

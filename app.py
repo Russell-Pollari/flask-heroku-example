@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 
@@ -18,27 +18,26 @@ def index():
 @app.route('/predict', methods=['POST'])
 def predict():
 	if request.method == 'POST':
-		if 'file' not in request.files:
+		if 'album' not in request.files:
 			return 'No file found', 400
 
-		file = request.files['file']
-		# TODO: check file type
-
+		file = request.files['album']
+		# TODO: check file type and format etc
 		try:
 			x = img_to_array(load_img(file)) / 256
 		except:
 			return 'Invalid input', 400
 
 		# TODO: validate input
-		print('Input', x)
-
 		pred = model.predict(np.expand_dims(x, axis=0))
+
+		print('Input', x)
 		print('Output', pred);
 
 		result = pred[0][0]
-		text = 'metal!' if result < 0.5 else 'not metal'
+		genre = 'metal!' if pred[0][0] < 0.5 else 'not metal'
 
-		return render_template('index.html', result=result, text=text)
+		return jsonify({ 'genre': genre });
 
 
 if __name__ == '__main__':
