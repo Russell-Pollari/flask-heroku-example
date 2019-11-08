@@ -4,7 +4,7 @@ from flask import Flask, request, render_template, jsonify
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 
-# TODO: Load model from remote storage
+# TODO: Load model from model registry
 print('Loading model...');
 model = load_model('trained_models/model.h5')
 
@@ -24,7 +24,7 @@ def predict():
 		file = request.files['album']
 		# TODO: check file type and format etc
 		try:
-			x = img_to_array(load_img(file)) / 256
+			x = img_to_array(load_img(file)) / 255
 		except:
 			return 'Invalid input', 400
 
