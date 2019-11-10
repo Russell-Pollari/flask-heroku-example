@@ -1,5 +1,6 @@
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from model import model
+import os
 
 TRAIN_PATH = 'data/train'
 TEST_PATH = 'data/test'
