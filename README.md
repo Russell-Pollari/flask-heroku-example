@@ -15,22 +15,22 @@ https://sm-flask-heroku-tutorial.herokuapp.com/
 ## Directory structure
 ```
 ├── .circleci/
-|   └── config.yml 	// config for circleci
-├── album_art_classifier/ 	// package containing ML model
-|		├── album_art_classifier/ 	// source code for ML model
-|		├── tests/ 	// tests for ML model
-|   └── setup.py 	// makes this a python package
+|   └── config.yml // config for circleci
+├── album_art_classifier // package containing ML model
+|		├── album_art_classifier // source code for ML model
+|		├── tests // tests for ML model
+|		└── setup.py // make this a python package
 ├── flask_app/
-|		├── templates 	// html templates
-|   └── app.py 	// flask app
-├── trained_models/ 	// saved ML models
-|   └── model.h5
-├── .gitignore 	// files and folders to keep out of version control
-├── Procfile 	// Instructions for Heroku
-├── README.md 	// you're reading it :)
-├── requirements.txt 	// tells Heroku what to install
-├── runtime.txt 	// specifies the python version for Heroku
-└── train.py 	// script to train ML model on training data
+|		├── templates // html templates
+|		└── app.py // Flask app
+├── trained_models/ // saved ML models
+|		└── model.h5
+├── .gitignore // files and folders to keep out of version control
+├── Procfile // Instructions for Heroku
+├── README.md // you're reading it :)
+├── requirements.txt // tells Heroku what to install
+├── runtime.txt // specifies the python version for Heroku
+└── train.py // script to train ML model on training data
 ```
 
 ## Development
