@@ -61,4 +61,4 @@ Werkzeug==0.16.0
 wrapt==1.11.2
 zipp==0.6.0
 
-album_art_classifier
+./album_art_classifier
