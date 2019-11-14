@@ -1,1 +1,1 @@
-web: gunicorn app:app
+web: gunicorn src.flas_app.app:app

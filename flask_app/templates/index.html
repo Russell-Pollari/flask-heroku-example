@@ -1,0 +1,20 @@
+<!doctype html>
+<div style="text-align: center">
+	<h1>
+		Is it metal?
+	</h1>
+	<h3>
+		Upload an album cover
+	</h3>
+	<div>
+		{{ name }}
+	</div>
+	<form method="post" action="/predict" enctype="multipart/form-data">
+		<input name="album" type="file" />
+		<div>
+			<button type="submit" style="margin: 16px">
+				Is it metal?
+			</button>
+		</div>
+	</form>
+</div>
