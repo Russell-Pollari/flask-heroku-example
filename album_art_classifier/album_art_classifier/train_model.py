@@ -6,8 +6,6 @@ from album_art_classifier.model import model
 TRAIN_PATH = 'data/train'
 SAVE_PATH = 'trained_models/model.h5'
 
-# TODO: set seed
-
 
 def train_model(
 	model,
