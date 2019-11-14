@@ -37,7 +37,7 @@ jobs:
       - run:
           name: run tests
           command: |
-            . venv/bin/activaste
+            . venv/bin/activate
             pytest
       #
       # - store_artifacts:
