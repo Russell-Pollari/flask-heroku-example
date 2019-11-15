@@ -3,14 +3,11 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 from album_art_classifier.model import model
 
-TRAIN_PATH = 'data/train'
-SAVE_PATH = 'trained_models/model.h5'
-
 
 def train_model(
 	model,
 	save_path='trained_models/model.h5',
-	data_folder='data/train'
+	data_folder='data/train',
 ):
 	model.compile(
 		loss='binary_crossentropy',
@@ -35,6 +32,8 @@ def train_model(
 
 	print('Saving model as', save_path)
 	model.save(save_path)
+
+	return model
 
 
 if __name__ == '__main__':
