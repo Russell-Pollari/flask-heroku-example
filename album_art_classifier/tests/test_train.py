@@ -6,7 +6,7 @@ from album_art_classifier import AlbumArtClassifier
 data_directory = 'data/sample'
 
 
-@pytest.mark.skpif(not os.path.exists(data_directory), reason="No sample data to train on")  # noqa E501
+@pytest.mark.skipif(not os.path.exists(data_directory), reason="No sample data to train on")  # noqa E501
 def test_train(tmp_path):
 	save_path = tmp_path / 'test_model.h5'
 
