@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, jsonify
 
-from album_art_classifier import AlbumArtClassifier
+from album_art_classifier.AlbumArtClassifier import AlbumArtClassifier
 
 # TODO: Load model from model registry
 print('Loading model...')
