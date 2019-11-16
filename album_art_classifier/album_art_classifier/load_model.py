@@ -17,7 +17,7 @@ def load_model(from_s3=True):
 			print('Loading weights...')
 			classifer.load_weights('{}/weights.h5'.format(tmpdir))
 	else:
-		print('Loading model from file system')
+		print('Loading model from file system...')
 		classifer.load_weights('trained_models/model.h5')
 
 	return classifer
