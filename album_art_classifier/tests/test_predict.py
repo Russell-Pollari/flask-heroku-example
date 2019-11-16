@@ -9,7 +9,6 @@ def test_predict():
 	path_to_test_image = os.path.join(current_directory, "test-image.jpg")
 
 	classifier = AlbumArtClassifier()
-	classifier.load_weights('trained_models/model.h5')
 
 	genre, pred = classifier.classify_one(path_to_test_image)
 

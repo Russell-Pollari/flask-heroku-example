@@ -65,4 +65,6 @@ To run app locally (starts server on localhost:5000)
 
 1. Create heroku account and install heroku CLI: https://devcenter.heroku.com/articles/heroku-cli#download-and-install
 2. `$ heroku create <app_name>`
-3. `$ git push heroku master`
+3. Set `S3_URL` env variable (points to saved weights)  
+`$ heroku config:set S3_URL=<url>`  
+4. Deploy: `$ git push heroku master`

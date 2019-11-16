@@ -1,10 +1,9 @@
 import os
 from flask import Flask, request, render_template, jsonify
 
-from flask_app.load_model import load_model
+from album_art_classifier.load_model import load_model
 
-from_s3 = 'S3_URL' in os.environ
-classifer = load_model(from_s3=from_s3)
+classifer = load_model(from_s3='S3_URL' in os.environ)
 
 app = Flask(__name__)
 
