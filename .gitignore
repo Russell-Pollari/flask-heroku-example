@@ -3,3 +3,4 @@ __pycache__
 /data
 .pytest_cache
 *.egg-info
+trained_models

@@ -1,11 +1,10 @@
+import os
 from flask import Flask, request, render_template, jsonify
 
-from album_art_classifier.AlbumArtClassifier import AlbumArtClassifier
+from flask_app.load_model import load_model
 
-# TODO: Load model from model registry
-print('Loading model...')
-classifer = AlbumArtClassifier()
-classifer.load_weights('trained_models/model.h5')
+from_s3 = 'S3_URL' in os.environ
+classifer = load_model(from_s3=from_s3)
 
 app = Flask(__name__)
 
