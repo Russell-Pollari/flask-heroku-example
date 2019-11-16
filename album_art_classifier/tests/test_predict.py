@@ -1,5 +1,6 @@
 import os
-from album_art_classifier import AlbumArtClassifier
+
+from album_art_classifier.AlbumArtClassifier import AlbumArtClassifier
 
 
 def test_predict():

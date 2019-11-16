@@ -1,7 +1,7 @@
 import os
 import pytest
 
-from album_art_classifier import AlbumArtClassifier
+from album_art_classifier.AlbumArtClassifier import AlbumArtClassifier
 
 data_directory = 'data/sample'
 
