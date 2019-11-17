@@ -28,7 +28,7 @@ Live example here: https://sm-flask-heroku-tutorial.herokuapp.com/
 ├── trained_models // saved ML models
 ├── .flake8 // linter config
 ├── .gitignore
-├── Procfile // Deployment tnstructions for Heroku
+├── Procfile // Deployment instructions for Heroku
 ├── README.md // you're reading it :)
 ├── requirements.txt //
 └── runtime.txt // specify the Python version for Heroku
