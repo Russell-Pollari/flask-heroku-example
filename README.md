@@ -16,7 +16,7 @@ Live example here: https://sm-flask-heroku-tutorial.herokuapp.com/
 |   |   ├── load_model.py
 |   |   ├── model.py
 |   |   └── train_model.py
-|   ├── tests
+|   ├── tests // tests for ML package
 |   └── setup.py // Make this a python package
 ├── flask_app
 |   ├── templates // html templates
@@ -25,12 +25,13 @@ Live example here: https://sm-flask-heroku-tutorial.herokuapp.com/
 ├── scripts
 |   ├── download_data.py // fetch data from remote storage
 |   └── run_experiment.py // run an mlflow experiment
-├── trained_models // saved ML models
+├── trained_models // saved ML models (for local development)
+|   └── .gitignore // don't commit models to version control
 ├── .flake8 // linter config
 ├── .gitignore
-├── Procfile // Deployment instructions for Heroku
+├── Procfile // deployment instructions for Heroku
 ├── README.md // you're reading it :)
-├── requirements.txt //
+├── requirements.txt // pip requirements
 └── runtime.txt // specify the Python version for Heroku
 ```
 
@@ -48,7 +49,7 @@ Install dependencies:
 ### Training/experiments
 #### Download data  
 `$ python scripts/download_data.py`  
-This download a save model from S3 and extract into root directory:
+Download the dataset from S3 and extract it into the root directory:
 ```
 ├── data
     ├── sample
