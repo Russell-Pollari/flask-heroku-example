@@ -13,11 +13,12 @@ class AlbumArtClassifier:
 	def load_weights(self, file):
 		self.model = load_model(file)
 
-	def fit_from_directory(self, directory, save_path):
+	def fit_from_directory(self, directory, model_path=None):
 		self.model = train_model(
 			self.model,
-			data_folder=directory,
-			save_path=save_path
+			train_dir=directory,
+			val_dir=directory,
+			model_path=model_path
 		)
 
 	def classify_one(self, file):

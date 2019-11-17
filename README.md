@@ -1,8 +1,7 @@
 # Album art classifier
 
 Classify an album as metal or not metal based on it's album art.
-This repo is contains the ML package as well as a simple Flask app to host.
-Work in progress to demonstrate best practices
+This repo contains the ML package as well as a simple Flask app to host.
 
 Live example here: https://sm-flask-heroku-tutorial.herokuapp.com/
 
@@ -14,28 +13,30 @@ Live example here: https://sm-flask-heroku-tutorial.herokuapp.com/
 |   ├── album_art_classifier // source code for ML model
 |   |   ├── __init__.py
 |   |   ├── AlbumArtClassifier.py
+|   |   ├── load_model.py
 |   |   ├── model.py
 |   |   └── train_model.py
-|   ├── tests // tests for ML model
-|   └── setup.py // makes this a python package
+|   ├── tests
+|   └── setup.py // Make this a python package
 ├── flask_app
 |   ├── templates // html templates
 |   |   └── index.html
 |   └── app.py // Flask app
 ├── scripts
-|   └── download_data.py // Flask app
+|   ├── download_data.py // fetch data from remote storage
+|   └── run_experiment.py // run an mlflow experiment
 ├── trained_models // saved ML models
 ├── .flake8 // linter config
-├── .gitignore // files and folders to keep out of version control
-├── Procfile // Instructions for Heroku
+├── .gitignore
+├── Procfile // Deployment tnstructions for Heroku
 ├── README.md // you're reading it :)
-├── requirements.txt // tells Heroku what to install
-├── runtime.txt // specifies the python version for Heroku
+├── requirements.txt //
+└── runtime.txt // specify the Python version for Heroku
 ```
 
 ## Development
 
-### set up enviornment
+### Set up enviornment
 (Recommended) Setup up virtual environment https://virtualenv.pypa.io/en/latest/  
 `$ virtualenv venv`  
 `$ source venv/bin/activate`
@@ -44,21 +45,47 @@ Install dependencies:
 `$ pip install -r requirements.txt`
 
 
-### Training model
-Download data  
-`$ python scripts/downlaod_data.py`  
+### Training/experiments
+#### Download data  
+`$ python scripts/download_data.py`  
+This download a save model from S3 and extract into root directory:
+```
+├── data
+    ├── sample
+    |   ├── metal/
+    |   └── not-metal/
+    ├── test
+    |   ├── metal/
+    |   └── not-metal/
+    ├── train
+    |   ├── metal/
+    |   └── not-metal/
+    └── validate
+        ├── metal/
+        └── not-metal/
+```
 
-Train model  
-`$ python album_art_classifier/album_art_classifier/train_model.py --save_path trained_models/model.h5 --data_folder data/train`
+#### Run experiment
+```
+$ python scripts/run_experiment.py experiment_name \
+	--train_dir data/train
+	--val_dir data/validate
+	--model_path trained_models/model.h5
+	--epochs 10
+	--batch_size 32
+```
+
+#### View experiments
+`$ mlflow ui`
 
 
-### Running Flask app
+## Running Flask app locally
 
 To ensure app runs in debug mode set `FLASK_ENV` envioronment variable before running:  
 `$ export FLASK_ENV=development`
 
-To run app locally (starts server on localhost:5000)  
-`$ python flask_app/app.py`
+To run app locally (starts server on localhost:8000)  
+`$ gunicorn flask_app.app:app`
 
 
 ## Deploying:
