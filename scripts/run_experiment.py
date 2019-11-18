@@ -48,7 +48,6 @@ def run_experiment(
 	batch_size=16
 ):
 	model = build_model()
-	print(model)
 	experiment_id = mlflow.set_experiment(exp_name)
 
 	with mlflow.start_run(experiment_id=experiment_id):
