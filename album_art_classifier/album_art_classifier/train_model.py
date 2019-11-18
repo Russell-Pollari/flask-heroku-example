@@ -13,7 +13,7 @@ def count_files(dir):
 def train_model(
 	model,
 	epochs=10,
-	batch_size=16,
+	batch_size=32,
 	callbacks=[],
 	model_path=None,
 	train_dir='data/train',
@@ -25,17 +25,19 @@ def train_model(
 		metrics=['acc']
 	)
 
-	data_gen = ImageDataGenerator(rescale=1 / 255)
+	data_gen = ImageDataGenerator(rescale=1. / 255)
 
 	train_generator = data_gen.flow_from_directory(
 		train_dir,
 		target_size=(300, 300),
+		batch_size=batch_size,
 		class_mode='binary',
 	)
 
 	validation_generator = data_gen.flow_from_directory(
 		val_dir,
 		target_size=(300, 300),
+		batch_size=batch_size,
 		class_mode='binary',
 	)
 

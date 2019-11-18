@@ -71,8 +71,9 @@ Download the dataset from S3 and extract it into the root directory:
 $ python scripts/run_experiment.py experiment_name \
 	--train_dir data/train
 	--val_dir data/validate
+	--test_dir data/test
 	--model_path trained_models/model.h5
-	--epochs 10
+	--epochs 5
 	--batch_size 32
 ```
 
