@@ -1,14 +1,15 @@
-import os
+import tempfile
 import wget
 import tarfile
 
 
-def download_dataset(data_url, save_as='data/albums.tar.gz'):
-	if not os.path.exists(save_as):
-		wget.download(data_url, save_as)
+def download_dataset(data_url):
+	with tempfile.TemporaryDirectory() as tmpdir:
+		tmp_path = '{}/data.tar.gz'.format(tmpdir)
+		wget.download(data_url, tmp_path)
 
-	with tarfile.open(save_as) as tar:
-		tar.extractall()
+		with tarfile.open(tmp_path) as tar:
+			tar.extractall()
 
 
 if __name__ == '__main__':
