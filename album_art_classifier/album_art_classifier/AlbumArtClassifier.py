@@ -2,13 +2,13 @@ import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 
-from album_art_classifier.model import model as _model
+from album_art_classifier.model import build_model
 from album_art_classifier.train_model import train_model
 
 
 class AlbumArtClassifier:
 	def __init__(self):
-		self.model = _model
+		self.model = build_model()
 
 	def load_weights(self, file):
 		self.model = load_model(file)
