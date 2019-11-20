@@ -26,12 +26,15 @@ class MlFlowCallback(Callback):
 		}, step=epoch)
 
 		if logs['val_loss'] < self.best_val_loss:
+			self.best_val_loss = logs['val_loss']
+
 			with tempfile.TemporaryDirectory() as tmpdir:
 				model_path = '{}/model-chkpt-{}.h5'.format(tmpdir, epoch)
 				self.model.save(model_path)
 				mlflow.log_artifact(model_path)
 
 			test_loss, test_acc = evaluate_model(self.model, test_dir=self.test_dir)
+
 			mlflow.log_metrics({
 				'test_loss': test_loss,
 				'test_acc': test_acc,
@@ -47,10 +50,10 @@ def run_experiment(
 	epochs=10,
 	batch_size=16
 ):
-	model = build_model()
-	experiment_id = mlflow.set_experiment(exp_name)
 
+	experiment_id = mlflow.set_experiment(exp_name)
 	with mlflow.start_run(experiment_id=experiment_id):
+		model = build_model()
 		train_model(
 			model,
 			model_path=model_path,

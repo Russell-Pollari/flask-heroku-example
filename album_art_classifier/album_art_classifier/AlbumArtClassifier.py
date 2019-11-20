@@ -2,7 +2,7 @@ import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 
-from album_art_classifier.model import build_model
+from album_art_classifier.build_model import build_model
 from album_art_classifier.train_model import train_model
 
 

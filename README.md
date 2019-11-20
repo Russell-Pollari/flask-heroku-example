@@ -7,14 +7,16 @@ Live example here: https://sm-flask-heroku-tutorial.herokuapp.com/
 
 ## Directory structure
 ```
-├── .circleci/
+├── .circleci
 |   └── config.yml // config for circleci
+├── .dvc // data version control
 ├── album_art_classifier // package containing ML model
 |   ├── album_art_classifier // source code for ML model
 |   |   ├── __init__.py
 |   |   ├── AlbumArtClassifier.py
+|   |   ├── evaluate_model.py
 |   |   ├── load_model.py
-|   |   ├── model.py
+|   |   ├── build_model.py
 |   |   └── train_model.py
 |   ├── tests // tests for ML package
 |   └── setup.py // Make this a python package
@@ -29,6 +31,7 @@ Live example here: https://sm-flask-heroku-tutorial.herokuapp.com/
 |   └── .gitignore // don't commit models to version control
 ├── .flake8 // linter config
 ├── .gitignore
+├── data.dvc //
 ├── Procfile // deployment instructions for Heroku
 ├── README.md // you're reading it :)
 ├── requirements.txt // pip requirements
