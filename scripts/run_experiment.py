@@ -1,7 +1,7 @@
 import argparse
-import tempfile
 import math
 import mlflow
+import mlflow.keras
 from tensorflow.keras.callbacks import Callback
 
 from album_art_classifier.model import build_model
@@ -28,10 +28,7 @@ class MlFlowCallback(Callback):
 		if logs['val_loss'] < self.best_val_loss:
 			self.best_val_loss = logs['val_loss']
 
-			with tempfile.TemporaryDirectory() as tmpdir:
-				model_path = '{}/model-chkpt-{}.h5'.format(tmpdir, epoch)
-				self.model.save(model_path)
-				mlflow.log_artifact(model_path)
+			mlflow.keras.log_model(self.model, 'model-epoch-{}.h5'.format(epoch + 1))
 
 			test_loss, test_acc = evaluate_model(self.model, test_dir=self.test_dir)
 
