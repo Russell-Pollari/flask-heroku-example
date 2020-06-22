@@ -1,4 +1,0 @@
-['remote "s3remote"']
-url = s3://album-art-classifier/data
-[core]
-remote = s3remote
