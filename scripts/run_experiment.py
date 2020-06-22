@@ -4,7 +4,7 @@ import mlflow
 import mlflow.keras
 from tensorflow.keras.callbacks import Callback
 
-from album_art_classifier.model import build_model
+from album_art_classifier.build_model import build_model
 from album_art_classifier.train_model import train_model
 from album_art_classifier.evaluate_model import evaluate_model
 
@@ -47,7 +47,6 @@ def run_experiment(
 	epochs=10,
 	batch_size=16
 ):
-
 	experiment_id = mlflow.set_experiment(exp_name)
 	with mlflow.start_run(experiment_id=experiment_id):
 		model = build_model()
