@@ -24,11 +24,15 @@ class MlFlowCallback(Callback):
 			'val_acc': logs['val_acc'],
 			'val_loss': logs['val_loss']
 		}, step=epoch)
+		mlflow.keras.log_model(self.model, 'model-epoch-{}.h5'.format(epoch + 1))
 
 		if logs['val_loss'] < self.best_val_loss:
 			self.best_val_loss = logs['val_loss']
 
-			mlflow.keras.log_model(self.model, 'model-epoch-{}.h5'.format(epoch + 1))
+			mlflow.keras.log_model(
+				self.model,
+				'model-epoch-{}-best.h5'.format(epoch + 1)
+			)
 
 			test_loss, test_acc = evaluate_model(self.model, test_dir=self.test_dir)
 

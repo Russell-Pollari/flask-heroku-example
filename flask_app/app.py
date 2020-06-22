@@ -1,9 +1,9 @@
-import os
 from flask import Flask, request, render_template, jsonify
 
-from album_art_classifier.load_model import load_model
+from album_art_classifier import AlbumArtClassifier
 
-classifer = load_model(from_s3='S3_URL' in os.environ)
+classifer = AlbumArtClassifier()
+classifer.load_weights('mlruns/7/365eed74f779486aa068428eac081f29/artifacts/model-chkpt-0.h5') # noqa
 
 app = Flask(__name__)
 
